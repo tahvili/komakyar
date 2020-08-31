@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "Komakyar";
+    src: url("http://localhost/assets/fonts/Komakyar.woff") format("woff");
+    }
+
+body, h1, h2, h3, h4, h5, h6, a, p, ul, li, div, header, footer, span {
+    font-family: 'Komakyar', Arial, sans-serif !important;}
+
+a{color:#777777 !important;} a:hover, a:active{color:#1473E6 !important;}
+a, a:hover, a:active{text-decoration:none !important;}
+
+.site-header {background:#fff; padding:20px 20px 20px 20px !important; -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);}
+
+.site-footer {background:#fff; padding:20px 20px 20px 20px !important;}
+
+.logo {max-width:120px;}
+
+.right {text-align:right;}
+
+header ul{display:inline;}
+header ul li{display:inline;}
+
+.menu-mix {display: flex!important;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;}
+
+.maxed-out {width: calc(100%/2)}
+
+.navbar-nav{padding-right:0px;}
+
+.logo{margin-right:0px !important;}
+
+a.sponsored-nav {border-radius:100px;padding:11px 25px 10px 25px;margin-left:20px;margin-top:5px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);color:#9F9595;}
+
+footer .social img{max-height:18px;max-width:18px;}
+footer .social{margin-left:5px;}
+
+.client-area {width:25px;}
+
+main {min-height:calc(100vh - 160px);}
+
+.full-height{height:100vh;}
+
+.row.no-padding, .row.no-padding .col-md-6 {padding:0px;margin:0px;}
+
+.blue {background:#1473E6;} .white {background:#fff;}
+
+.map {width:80%;}
