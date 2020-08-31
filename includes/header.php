@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="position-relative container-fluid">
 <div class="ml-auto maxed-out">
 <div class="menu-mix">
-<img src="../assets/img/logo.svg" class="navbar-brand logo mt-3 mt-lg-0 ml-lg-4 d-block d-lg-inline-block" alt="Komakyar Logo">
+<a href="/" class="navbar-brand logo mt-3 mt-lg-0 ml-lg-4 d-block d-lg-inline-block"><img src="../assets/img/logo.svg" class="" alt="Komakyar Logo"></a>
 <?php menu(); ?>
 </div>
 </div>

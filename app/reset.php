@@ -5,14 +5,10 @@ get_header('transparent'); ?>
 <div class="row no-padding">
 <div class="col-md-6 blue full-height vertical-center">
 
-<form class="register" action="" method="post">
-
-    <input type="text" placeholder="نام و نام خانوادگی" required>
+<form class="login" action="" method="post">
+رمز عبور خود را فراموش کرده اید؟<br> برای شروع بازیابی آدرس ایمیل خود را وارد نمایید.<br><br>
     <input type="email" placeholder="ایمیل پست الکترونیکی" required>
-    <input type="password" placeholder="کلمه عبور" required>
-    <button type="submit">ثبت نام</button>
-    <br>
-    <span class="psw"><a href="login">کاربر هستید؟ وارد شوید</a></span>
+    <button type="submit">ارسال</button>
 </form>
         
 

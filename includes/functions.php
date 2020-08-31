@@ -23,4 +23,29 @@ function get_header($state) {
 function get_footer() {
     include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php';
 }
+
+function searchbox() {
+    include $_SERVER['DOCUMENT_ROOT'] . '/includes/search.php';
+}
+
+function category() {
+    include $_SERVER['DOCUMENT_ROOT'] . '/includes/category.php';
+}
+
+function newsletter() {
+    include $_SERVER['DOCUMENT_ROOT'] . '/includes/newsletter.php';
+}
+
+function ads($company, $title, $description, $phone, $address, $instagram, $facebook, $website) {
+    $value = "<div class='col-md-6'><div class='ad'>
+    <h4>".$company."</h4><br><p><b>".$title."</b></p><br><p>".$description."</p><br>
+    <ul><li><img src='../assets/img/phone.svg' alt='Phone Number'><a href='tel:".$phone."'>".$phone."</a></li>
+    <li><img src='../assets/img/pin.svg' alt='Location'><a href='https://www.google.com/maps/place/".$address."'>".$address."</a></li>
+    <li><img src='../assets/img/instagram.svg' alt='Instagram'><a href='https://instagram.com/".$instagram."'>".$instagram."</a></li>
+    <li><img src='../assets/img/facebook.svg' alt='Facebook'><a href='https://www.facebook.com/".$instagram."'>".$facebook."</a></li>
+    <li><img src='../assets/img/pc.svg' alt='Website'><a href='//".$website."'>".$website."</a></li></ul>
+    </div></div>";
+    echo $value;
+}
+
 ?>

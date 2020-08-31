@@ -9,11 +9,13 @@ get_header('transparent'); ?>
 
     <input type="email" placeholder="ایمیل پست الکترونیکی" required>
     <input type="password" placeholder="کلمه عبور" required>
-    <button type="submit">ورود به سایت</button>
-    <label>
+    <label class="checkoxContainer">
       <input type="checkbox" checked="checked" name="remember"> مرا به خاطر بسپار
+      <span class="checkmark"></span>
     </label>
-    <span class="psw"><a href="#">فراموشی رمز عبور</a></span>
+    <button type="submit">ورود به سایت</button>
+    <br>
+    <span class="psw"><a href="reset">فراموشی رمز عبور</a> <a href="register">| ثبت نام</a></span>
 </form>
         
 
