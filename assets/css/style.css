@@ -35,7 +35,7 @@ header ul li{display:inline;}
 a.sponsored-nav {border-radius:100px;padding:11px 25px 10px 25px;margin-left:20px;margin-top:5px;
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);color:#9F9595;}
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);color:#9F9595;background:#fff;}
 
 footer .social img{max-height:18px;max-width:18px;}
 footer .social{margin-left:5px;}
@@ -50,4 +50,14 @@ main {min-height:calc(100vh - 160px);}
 
 .blue {background:#1473E6;} .white {background:#fff;}
 
-.map {width:80%;}
+.map {width:80%;margin:auto;}
+
+object{filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(70%);}
+
+.vertical-center {
+    min-height: 100%;
+    min-height: 100vh;
+  
+    display: flex;
+    align-items: center;
+  }
