@@ -1,29 +1,26 @@
 <?php
     define('ABSPATH', TRUE);
 
-    $url = $_SERVER['SERVER_NAME'];
-    var_dump($_SERVER);
-
 function page_title() {
 	return ("<title>blub</title>");
 }
 
 function menu() {
-	include $url . '/includes/menu.php';
+	include $_SERVER['DOCUMENT_ROOT'] . '/includes/menu.php';
 }
 
 function main_sponsor() {
-    include $url . '/includes/sponsor.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/includes/sponsor.php';
 }
 
 function get_header($state) {
-    include $url . '/includes/header.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     if ($state=="transparent"){
-        echo "<link rel='stylesheet' id='style-css' href=' . $url . '/assets/css/transparent.css' media='all' />";
+        echo "<link rel='stylesheet' id='style-css' href='../assets/css/transparent.css' media='all' />";
     }
 }
 
 function get_footer() {
-    include $url . '/includes/footer.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php';
 }
 ?>
