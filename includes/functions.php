@@ -1,5 +1,7 @@
 <?php
+    
     define('ABSPATH', TRUE);
+	include $_SERVER['DOCUMENT_ROOT'] . '/includes/server/config.php';
 
 function page_title() {
 	return ("<title>blub</title>");

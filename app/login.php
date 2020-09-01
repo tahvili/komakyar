@@ -1,19 +1,21 @@
 <?php 
 require '../includes/functions.php';
-get_header('transparent'); ?>
+get_header('transparent');
+?>
+
 
 <div class="row no-padding">
 <div class="col-md-6 blue full-height vertical-center">
 
-<form class="login" action="" method="post">
+<form class="login" action="../includes/server/pull.php" method="post">
 
-    <input type="email" placeholder="ایمیل پست الکترونیکی" required>
-    <input type="password" placeholder="کلمه عبور" required>
+    <input type="email" name="emailLogin" placeholder="آدرس ایمیل" required>
+    <input type="password" name="passLogin" placeholder="کلمه عبور" required>
     <label class="checkoxContainer">
       <input type="checkbox" checked="checked" name="remember"> مرا به خاطر بسپار
       <span class="checkmark"></span>
     </label>
-    <button type="submit">ورود به سایت</button>
+    <button  name="submitUserLogin" type="submit">ورود به سایت</button>
     <br>
     <span class="psw"><a href="reset">فراموشی رمز عبور</a> <a href="register">| ثبت نام</a></span>
 </form>
