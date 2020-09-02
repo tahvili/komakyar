@@ -50,4 +50,23 @@ function ads($company, $title, $description, $phone, $address, $instagram, $face
     echo $value;
 }
 
+function posted($id, $title, $impression, $like, $action) {
+    $value = "<div class='row'>
+    <div class='col-md-6'>
+    <div class='post-title'>".$title."</div>
+    </div>
+    <div class='col-md-2'>
+    <div class='post-info'>".$impression." دیدار </div>
+    </div>
+    <div class='col-md-2'>
+    <div class='post-info'>".$like." لایک </div>
+    </div>
+    <div class='col-md-2'>
+    <a class='button' href='./".$action."/?id=".$id."'>".$action."</a>
+    </div>
+
+    </div>";
+    echo $value;
+}
+
 ?>
