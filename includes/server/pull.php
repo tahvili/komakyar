@@ -13,6 +13,9 @@ if(isset($_POST['submitUserLogin'])){
     $queryRowUserLogin = mysqli_fetch_assoc($queryResUserLogin) ;
   
     if ($mailLogin == $queryRowUserLogin['email'] && $passLogin == $queryRowUserLogin['password']){
+        session_start();
+        $_SESSION['mailSession'] =  $mailLogin;
+        $_SESSION['passSession'] =  $passLogin;
         header('Location: ../../app/panel.php?login=success');
     }else {
         header('Location: ../../app/login.php?password=error');
@@ -21,3 +24,4 @@ if(isset($_POST['submitUserLogin'])){
 
 
 ?>
+

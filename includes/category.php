@@ -14,54 +14,70 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="row cat-section">
 
-<div class="col-md-3">
-    <a href="#"><div class="cat" style="background-image: url('../assets/img/test.jpg');">
-    <p>خدمات ساختمانی</p>
-    </div></a>
+    <div class="col-md-3">
+        <a href="#">
+            <div class="cat" style="background-image: url('../assets/img/test.jpg');">
+                <p>خدمات ساختمانی</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="#">
+            <div class="cat" style="background-image: url('../assets/img/test.jpg');">
+                <p>خدمات ساختمانی</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="#">
+            <div class="cat" style="background-image: url('../assets/img/test.jpg');">
+                <p>خدمات ساختمانی</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="#">
+            <div class="cat" style="background-image: url('../assets/img/test.jpg');">
+                <p>خدمات ساختمانی</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="#">
+            <div class="cat" style="background-image: url('../assets/img/test.jpg');">
+                <p>خدمات ساختمانی</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="#">
+            <div class="cat" style="background-image: url('../assets/img/test.jpg');">
+                <p>خدمات ساختمانی</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="#">
+            <div class="cat" style="background-image: url('../assets/img/test.jpg');">
+                <p>خدمات ساختمانی</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="#">
+            <div class="cat" style="background-image: url('../assets/img/test.jpg');">
+                <p>خدمات ساختمانی</p>
+            </div>
+        </a>
+    </div>
+
 </div>
 
-<div class="col-md-3">
-    <a href="#"><div class="cat" style="background-image: url('../assets/img/test.jpg');">
-    <p>خدمات ساختمانی</p>
-    </div></a>
-</div>
-
-<div class="col-md-3">
-    <a href="#"><div class="cat" style="background-image: url('../assets/img/test.jpg');">
-    <p>خدمات ساختمانی</p>
-    </div></a>
-</div>
-
-<div class="col-md-3">
-    <a href="#"><div class="cat" style="background-image: url('../assets/img/test.jpg');">
-    <p>خدمات ساختمانی</p>
-    </div></a>
-</div>
-
-<div class="col-md-3">
-    <a href="#"><div class="cat" style="background-image: url('../assets/img/test.jpg');">
-    <p>خدمات ساختمانی</p>
-    </div></a>
-</div>
-
-<div class="col-md-3">
-    <a href="#"><div class="cat" style="background-image: url('../assets/img/test.jpg');">
-    <p>خدمات ساختمانی</p>
-    </div></a>
-</div>
-
-<div class="col-md-3">
-    <a href="#"><div class="cat" style="background-image: url('../assets/img/test.jpg');">
-    <p>خدمات ساختمانی</p>
-    </div></a>
-</div>
-
-<div class="col-md-3">
-    <a href="#"><div class="cat" style="background-image: url('../assets/img/test.jpg');">
-    <p>خدمات ساختمانی</p>
-    </div></a>
-</div>
-
-</div>
-    
 </form>

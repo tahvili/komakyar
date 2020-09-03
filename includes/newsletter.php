@@ -13,12 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="row blue round-corner">
 
-<form class="newsletter" action="" method="post">
-<div class="row">
-    <div class="col-md-6 info-box">آدرس ایمیل خود را وارد کنید تا با آخرین خبر ها و برنامه ها آشنا شوید</div>
-    <div class="col-md-4" style="padding-left:0px;padding-right:0px;"><input type="email" placeholder="ایمیل پست الکترونیکی" required></div>
-    <div class="col-md-2"><button type="submit">ثبت ایمیل</button></div>
-</div>
-</form>
+    <form class="newsletter" action="" method="post">
+        <div class="row">
+            <div class="col-md-6 info-box">آدرس ایمیل خود را وارد کنید تا با آخرین خبر ها و برنامه ها آشنا شوید</div>
+            <div class="col-md-4" style="padding-left:0px;padding-right:0px;"><input type="email"
+                    placeholder="ایمیل پست الکترونیکی" required></div>
+            <div class="col-md-2"><button type="submit">ثبت ایمیل</button></div>
+        </div>
+    </form>
 
 </div>

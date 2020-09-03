@@ -1,29 +1,29 @@
 <?php 
 require '../includes/functions.php';
-get_header('transparent');
+
+if (isset($_SESSION['mailSession'])) {
+    header('Location: panel.php');
+}
+
+get_header('transparent'); 
 ?>
 
-
 <div class="row no-padding">
-<div class="col-md-6 blue full-height vertical-center">
+    <div class="col-md-6 blue full-height vertical-center">
 
-<form class="login" action="../includes/server/pull.php" method="post">
+        <form class="login" action="../includes/server/pull.php" method="post">
 
-    <input type="email" name="emailLogin" placeholder="آدرس ایمیل" required>
-    <input type="password" name="passLogin" placeholder="کلمه عبور" required>
-    <label class="checkoxContainer">
-      <input type="checkbox" checked="checked" name="remember"> مرا به خاطر بسپار
-      <span class="checkmark"></span>
-    </label>
-    <button  name="submitUserLogin" type="submit">ورود به سایت</button>
-    <br>
-    <span class="psw"><a href="reset">فراموشی رمز عبور</a> <a href="register">| ثبت نام</a></span>
-</form>
-        
+            <input type="email" name="emailLogin" placeholder="آدرس ایمیل" required>
+            <input type="password" name="passLogin" placeholder="کلمه عبور" required>
+            <button name="submitUserLogin" type="submit">ورود به سایت</button>
+            <br>
+            <span class="psw"><a href="reset">فراموشی رمز عبور</a> <a href="register">| ثبت نام</a></span>
+        </form>
 
-</div>
-<div class="col-md-6 white map full-height vertical-center">
-</div>
+
+    </div>
+    <div class="col-md-6 white map full-height vertical-center">
+    </div>
 </div>
 
 <?php get_footer(); ?>
