@@ -554,3 +554,13 @@ textarea {
   border: 0px;
   padding: 25px 5px 25px 5px;
 }
+
+.create select{
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  margin-bottom: 15px !important;
+  width: 100%;
+  border: 0px;
+  padding: 10px 25px 10px 25px;
+}

@@ -36,6 +36,10 @@ function category() {
     include $_SERVER['DOCUMENT_ROOT'] . '/includes/category.php';
 }
 
+function get_control(){
+    include $_SERVER['DOCUMENT_ROOT'] . '/newFolder/control.php';
+}
+
 function newsletter() {
     include $_SERVER['DOCUMENT_ROOT'] . '/includes/newsletter.php';
 }
