@@ -24,8 +24,7 @@ if(isset($_POST['submitAd'])){
     
      $queryAdCreat = "INSERT INTO ads (userID, adCode, bussinesName, adTitle, adText, phoneNumber, address, postCode, mail, website, facebook, instagram, telegram, legalBussinessName) VALUES ('$adRegister[userId]', '$adRegister[adCode]', '$adRegister[bussinesName]', '$adRegister[adTitle]', '$adRegister[adText]', '$adRegister[phoneNumber]', '$adRegister[address]', '$adRegister[postCode]', '$adRegister[mail]', '$adRegister[website]', '$adRegister[facebook]', '$adRegister[instagram]', '$adRegister[telegram]', '$adRegister[legalBussinessName]')";
      mysqli_query($dbConn, $queryAdCreat);
-
-     
+     header('Location: ../../app/panel.php?ads=success');
 
 };
 

@@ -88,6 +88,44 @@ checkLoginStatus();
 
 
 
+// Get User Information
+function getUserInformation($getYourData){
+    $dbConn = dbConnection();
+    $userMailSession = $_SESSION['mailSession'];   
+    
+    $queryFindUserId = "SELECT * FROM users WHERE email = '$userMailSession' ";
+    $queryResFindUserId = mysqli_query($dbConn, $queryFindUserId);
+    $queryRowFindUserId = mysqli_fetch_assoc($queryResFindUserId);
+    return $queryRowFindUserId[$getYourData];
 
+};
+
+// Show User Ads
+function showUserAds(){
+    $getUserId = getUserInformation("id");
+    $dbConn = dbConnection();
+
+    $queryUserAds = "SELECT * FROM ads WHERE userId = '$getUserId' ";
+    $queryResUserAds = mysqli_query($dbConn, $queryUserAds);
+
+    while ($queryRowResUserAds = mysqli_fetch_array($queryResUserAds)) {
+        echo "<tr>";
+        echo "<th scope='row'>" . $queryRowResUserAds['adCode'] . "</th>";
+        echo "<td>" . $queryRowResUserAds['adTitle'] . "</td>";
+        echo "<td>" . $queryRowResUserAds['adDate'] . "</span></td>";
+        echo "<td><span class='badge badge-warning p-2'>" . $queryRowResUserAds['adStatus'] . "</td>";
+        echo "</<tr>";        
+    }
+    
+};
+
+// Load a gravatar
+
+function gravatar($email = '', $rating = 'pg') {
+    $default = "../up/profile.png"; // Set a Default Avatar
+    $email = md5(strtolower(trim($email)));
+    $gravurl = "http://www.gravatar.com/avatar/$email";
+    return '<img src="'.$gravurl.'" border="0" alt="Avatar" class="profile-picture">';
+}
 
 ?>

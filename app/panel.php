@@ -10,14 +10,26 @@ get_header(''); ?>
 
     <div class="col-md-3">
         <div class="user-area">
-            <img src="../up/profile.png" class="profile-picture">
-            <div class="profile-username">محمد تحویلی</div>
-            <form class="profile-change" action="../includes/server/pull.php" method="post">
-                <input type="text" name="userRegister[name]" placeholder="نام" required>
-                <input type="text" name="userRegister[lastname]" placeholder="نام خانوادگی" required>
-                <input type="password" name="passLogin" placeholder="کلمه عبور" required>
-                <button name="submitUserLogin" type="submit">ثبت تغییرات</button>
+            <?php $emailForGravatar =  getUserInformation("email"); echo gravatar($emailForGravatar); ?>
+            <div class="profile-username"><?php echo getUserInformation("name") . " ". getUserInformation("lastName");?>
+            </div>
+
+            <form class="profile-change" action="" method="post">
+                <input type="hidden" name="destroySession" value="1">
+                <button name="submitUserLogin" type="submit">خروج</button>
             </form>
+
+
+            <?php 
+                $destroySession = filter_input(INPUT_POST, 'destroySession');
+                if ($destroySession == 1) {
+                    session_destroy();
+                    header('Location: ../../app/login.php?logout=success');
+
+                }    
+            ?>
+
+
         </div>
 
     </div>
@@ -31,29 +43,25 @@ get_header(''); ?>
                 </div>
                 <div class="col-md-4" style="text-align:left;">
                     <a href='./add'>ثبت آگهی رایگان</a>
-                    
+
                 </div>
-                
+
             </div>
             <table class="table table-bordered text-center">
-  <thead>
-    <tr>
-      <th scope="col">شناسه آگهی</th>
-      <th scope="col">عنوان آگهی</th>
-      <th scope="col">تاریخ ثبت</th>
-      <th scope="col">وضعیت</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">KM-1161880</th>
-      <td>طراحی سایت تورونتو</td>
-      <td>2020-09-03 23:11:36</td>
-      <td><span class="badge badge-warning p-2">در حال بررسی</span></td>
-    </tr>
-    <?php echo $_SESSION['mailSession'];?>
-  </tbody>
-</table>
+                <thead>
+                    <tr>
+                        <th scope="col">شناسه آگهی</th>
+                        <th scope="col">عنوان آگهی</th>
+                        <th scope="col">تاریخ ثبت</th>
+                        <th scope="col">وضعیت</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php showUserAds(); ?>
+
+                </tbody>
+            </table>
         </div>
 
     </div>
