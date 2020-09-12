@@ -11,7 +11,7 @@ if(isset($_POST['submitUserRegister'])){
     $queryUserRegister = "INSERT INTO users (name,lastName,email,phonenumber,password) VALUES ('$userRegister[name]','$userRegister[lastname]','$userRegister[email]','$userRegister[phonenumber]','$userRegister[password]')";
     mysqli_query($dbConn, $queryUserRegister);   
 
-    header('Location: ../../app/panel.php?register=success');
+    header('Location: ../../app/login.php?register=success');
 }
 // Add New Ad
 if(isset($_POST['submitAd'])){

@@ -107,15 +107,33 @@ function showUserAds(){
 
     $queryUserAds = "SELECT * FROM ads WHERE userId = '$getUserId' ";
     $queryResUserAds = mysqli_query($dbConn, $queryUserAds);
+    
 
-    while ($queryRowResUserAds = mysqli_fetch_array($queryResUserAds)) {
+
+    if(mysqli_num_rows($queryResUserAds)== 0){
+        echo "<tr>
+        <td>شما تا حالا هیچ آگهی ثبت نکرده اید! </td>
+        <td>-</<td>
+        <td>-</<td>
+        <td>-</<td>
+        <td>-</<td>
+        </tr>
+        ";
+    }
+    else{
+       while($queryRowResUserAds = mysqli_fetch_array($queryResUserAds)) {
+    
         echo "<tr>";
         echo "<th scope='row'>" . $queryRowResUserAds['adCode'] . "</th>";
         echo "<td>" . $queryRowResUserAds['adTitle'] . "</td>";
         echo "<td>" . $queryRowResUserAds['adDate'] . "</span></td>";
         echo "<td><span class='badge badge-warning p-2'>" . $queryRowResUserAds['adStatus'] . "</td>";
-        echo "</<tr>";        
+        echo "<td><a href='show-ad.php?adCode=" . $queryRowResUserAds['adCode'] . "'>نمایش آگهی</a></td>";
+
+        echo "</<tr>";     
+       }
     }
+    
     
 };
 
