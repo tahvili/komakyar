@@ -10,9 +10,9 @@ get_header('transparent');
 
 <div class="row no-padding">
     <div class="col-md-6 blue full-height vertical-center">
-
+    
         <form class="login" action="../includes/server/pull.php" method="post">
-
+        <?php error(); ?>
             <input type="email" name="emailLogin" placeholder="آدرس ایمیل" required>
             <input type="password" name="passLogin" placeholder="کلمه عبور" required>
             <button name="submitUserLogin" type="submit">ورود به سایت</button>

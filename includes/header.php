@@ -22,12 +22,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php page_title(); ?>
 	<link rel='stylesheet' id='style-css' href='../assets/css/style.css' media='all' />
 	<link rel='stylesheet' id='bootstrap-css' href='../assets/css/bootstrap.min.css' media='all' />
+	<link rel="stylesheet" href="../assets/js/build/css/intlTelInput.css">
 	<script src='../assets/js/jquery.min.js' id='jquery-js' type="text/javascript"></script>
 	<script src='../assets/js/bootstrap.min.js' id='bootstrap-js' type="text/javascript"></script>
 	<script src='../assets/js/sweetalert2.js' id='sweetalert2-js' type="text/javascript"></script>
 </head>
 
 <body itemtype='https://schema.org/WebPage' itemscope='itemscope' class="rtl page">
+
 
 	<header class="site-header navbar navbar-expand-lg align-items-center w-100 z-index-10 navbar-light">
 		<div class="position-relative container-fluid">
@@ -47,3 +49,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	</header>
 	<main>
+	

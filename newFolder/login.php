@@ -10,7 +10,7 @@ get_header('transparent');
 
 <div class="row no-padding">
     <div class="col-md-6 blue full-height vertical-center">
-
+    
         <form class="login" action="" method="post">
 
             <input type="email" name="emailLogin" placeholder="آدرس ایمیل" required>

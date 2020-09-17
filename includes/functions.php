@@ -56,6 +56,24 @@ function ads($company, $title, $description, $phone, $address, $instagram, $face
     echo $value;
 }
 
+function error(){
+
+    if(isset($_GET['password'])){
+        $msg = $_GET['password'];
+        if ($msg=="error"){
+            echo "<div class='alert alert-danger'>حساب کاربری وارد شده وجود ندارد.</div>";
+        }
+    }
+
+    if(isset($_GET['register'])){
+        $msg = $_GET['register'];
+        if ($msg=="success"){
+            echo "<div class='alert alert-success'>ثبت نام کامل شود. لطفا وارد اکانت شوید</div>";
+        }
+    }
+
+}
+
 // function posted($id, $title, $impression, $like, $action) {
 //     $value = "<div class='row'>
 //     <div class='col-md-6'>
