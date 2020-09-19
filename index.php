@@ -3,7 +3,9 @@ require 'includes/functions.php';
 get_header('transparent'); ?>
 
 <div class="row no-padding">
-    <div class="col-md-6 blue full-height">
+    <div class="col-md-6 blue full-height community">
+        <h1>جامعه زیبا برای ایرانیان کانادا</h1>
+        <p>برای شروع داستان، ایالت خود را انتخاب کنید.</p>
     </div>
     <div class="col-md-6 white map full-height vertical-center">
 

@@ -554,6 +554,15 @@ textarea {
   border: 0px;
   padding: 25px 25px 25px 25px;
 }
+
+.community{background:#1473E6 url("../img/community.png") no-repeat center bottom;background-size: cover;text-align:center;}
+.community h1{
+  color: #fff;
+  padding: 2em 2em 0em 2em;
+  margin: auto;
+  margin-top: calc(100%/2 - 20%);
+  font-size: 50px;}
+.community p{color:#fff;margin:auto;padding:2em;}
 .entry-content a{color:#1473E6 !important;background:transparent;padding:unset;margin:unset;border-radius:unset;}
 .iti__flag {background-image: url("../img/flags.png") !important;margin-left:10px;}
 
