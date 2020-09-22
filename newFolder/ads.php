@@ -18,11 +18,12 @@ get_header(''); ?>
         <div class="box">
             <div class="row" style="padding:15px;padding-left:0px;">
                 <div class="col-md-6">
-                    <h3>صندوق پیام</h3>
+                    <h3>آگهی ها</h3>
                 </div>
                 <div class="col-md-2">
                 </div>
                 <div class="col-md-4" style="text-align:left;">
+
                 </div>
 
             </div>
@@ -30,10 +31,10 @@ get_header(''); ?>
             <table class="table table-bordered text-center">
                 <thead>
                     <tr>
-                        <th scope="col">نام و نام خانوادگی</th>
-                        <th scope="col">آدرس ایمیل</th>
-                        <th scope="col">موضوع پیام</th>
+                        <th scope="col">شناسه آگهی</th>
+                        <th scope="col">عنوان آگهی</th>
                         <th scope="col">تاریخ ثبت</th>
+                        <th scope="col">وضعیت</th>
                         <th scope="col">عملیات</th>
 
                     </tr>

@@ -49,18 +49,39 @@ get_header(''); ?>
             </div>
 
             <?php
-            function showMyAd(){
+            
                 $showAdCode = $_GET['adCode'];
                 $dbConn = dbConnection();
                 $queryShowAdCode = "SELECT * FROM ads WHERE adCode = '$showAdCode' ";
                 $queryResShowAdCode = mysqli_query($dbConn, $queryShowAdCode);
                 
                 while($queryRowShowAdCode = mysqli_fetch_array($queryResShowAdCode)) { 
-                    var_dump($queryRowShowAdCode);
-                }
+                    ?>
+
+<ul>
+<li>شناسه آگهی : <span><?php echo $queryRowShowAdCode['adCode']?></span></li>
+<li>نام کسب و کار : <span><?php echo $queryRowShowAdCode['bussinesName']?></span></li>
+<li>متن آگهی : <span><?php echo $queryRowShowAdCode['adText']?></span></li>
+<li>شماره موبایل : <span><?php echo $queryRowShowAdCode['phoneNumber']?></span></li>
+<li>آدرس : <span><?php echo $queryRowShowAdCode['address']?></span></li>
+<li>کد پستی : <span><?php echo $queryRowShowAdCode['postCode']?></span></li>
+<li>آدرس ایمیل : <span><?php echo $queryRowShowAdCode['mail']?></span></li>
+<li>آدرس وبسایت : <span><?php echo $queryRowShowAdCode['website']?></span></li>
+<li>فیسبوک : <span><?php echo $queryRowShowAdCode['facebook']?></span></li>
+<li>اینستاگرام : <span><?php echo $queryRowShowAdCode['instagram']?></span></li>
+<li>تلگرام : <span><?php echo $queryRowShowAdCode['telegram']?></span></li>
+<li>نام قانونی کسب و کار : <span><?php echo $queryRowShowAdCode['legalBussinessName']?></span></li>
+<li>تاریخ ثبت : <span><?php echo $queryRowShowAdCode['adDate']?></span></li>
+<li>وضعیت آگهی : <span><?php echo $queryRowShowAdCode['adStatus']?></span></li>
+
+</ul>
+
+
+                   <?php 
+                   
+                };
                 
-            };
-            showMyAd();
+           
             
             
             
