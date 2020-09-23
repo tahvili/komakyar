@@ -12,21 +12,29 @@ get_header(''); ?>
             <input hidden name="adRegister[adUsermail]" value="<?php echo $_SESSION['mailSession']; ?>">
             <input type="text" name="adRegister[bussinesName]" placeholder="نام کسب و کار*" required>
             <input type="text" name="adRegister[adTitle]" placeholder="عنوان آگهی*" required>
+            <select name="adRegister[adCategory]" id="category" required style="  -webkit-appearance: none;-moz-appearance: none;appearance: none;">
+                <option value="" disabled selected hidden>انتخاب دسته بندی*</option>
+                <option value="constructions">خدمات ساختمانی</option>
+                <option value="realtor">مشاور املاک</option>
+                <option value="education">آموزش</option>
+            </select>
             <textarea rows="6" name="adRegister[adText]" placeholder="متن آگهی*"></textarea>
-            <input type="tel" name="userRegister[phonenumber]" placeholder="شماره موبایل" id="phone">
-            <script src="../assets/js/build/js/intlTelInput.min.js"></script>
+            <input type="tel" placeholder="شماره موبایل" id="phone">
+            <input type="tel" name="adRegister[full_phone]" hidden>
+            <script src="../assets/js/build/js/intlTelInput.js"></script>
             <script>
                 var input = document.querySelector("#phone");
-                window.intlTelInput(input, {
+                intlTelInput(input, {
                     initialCountry: "auto",
-                    geoIpLookup: function(callback) {
+                    geoIpLookup: function(success, failure) {
                         $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
-                        var countryCode = (resp && resp.country) ? resp.country : "";
-                        callback(countryCode);
+                        var countryCode = (resp && resp.country) ? resp.country : "us";
+                        success(countryCode);
                         });
                     },
-                    utilsScript: "../assets/js/build/js/utils.js" // just for formatting/placeholders etc
-                    });
+                    hiddenInput: "full_phone",
+                    utilsScript: "../assets/js/build/js/utils.js"
+                });
             </script>  
             <input type="text" name="adRegister[address]" placeholder="آدرس*" required>
             <input type="text" name="adRegister[postCode]" placeholder="کدپستی*" required>

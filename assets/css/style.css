@@ -447,6 +447,54 @@ label {
   margin-top: -5px;
 }
 
+
+.ad-view {
+  text-align: left;
+}
+
+.ad-view b,
+.ad-view p {
+  text-align: right;
+  width: 100% !important;
+}
+
+.ad-view h4 {
+  color: #fff;
+  background: #1473E6;
+  border-radius: 100px;
+  padding: 12px 40px 12px 40px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: normal;
+  display: inline-block;
+}
+
+.ad-view ul {
+  display: inline;
+}
+
+.ad-view ul li {
+  direction: ltr;
+  font-size: 14px;
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  background: #f1f1f1;
+  padding: 10px 20px 10px 20px;
+  border-radius: 50px;
+  padding-top: 15px;
+}
+
+.ad-view ul li a{backgorund:unset;border:unset;color:usnet;padding:unset;border-radius:unset;}
+
+.ad-view ul li img {
+  max-width: 20px;
+  max-height: 20px;
+  margin-right: 5px;
+  margin-top: -5px;
+}
+
 .box,
 .user-area {
   border-radius: 15px;

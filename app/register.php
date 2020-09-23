@@ -16,20 +16,22 @@ get_header('transparent');
             <input type="text" name="userRegister[name]" placeholder="نام*" required>
             <input type="text" name="userRegister[lastname]" placeholder="نام خانوادگی*" required>
             <input type="email" name="userRegister[email]" placeholder="آدرس ایمیل*" required>
-            <input type="tel" name="userRegister[phonenumber]" placeholder="شماره موبایل*" required id="phone">
-            <script src="../assets/js/build/js/intlTelInput.min.js"></script>
+            <input type="tel" placeholder="شماره موبایل*" id="phone" required>
+            <input type="tel" name="userRegister[full_phone]" hidden>
+            <script src="../assets/js/build/js/intlTelInput.js"></script>
             <script>
                 var input = document.querySelector("#phone");
-                window.intlTelInput(input, {
+                intlTelInput(input, {
                     initialCountry: "auto",
-                    geoIpLookup: function(callback) {
+                    geoIpLookup: function(success, failure) {
                         $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
-                        var countryCode = (resp && resp.country) ? resp.country : "";
-                        callback(countryCode);
+                        var countryCode = (resp && resp.country) ? resp.country : "us";
+                        success(countryCode);
                         });
                     },
-                    utilsScript: "../assets/js/build/js/utils.js" // just for formatting/placeholders etc
-                    });
+                    hiddenInput: "full_phone",
+                    utilsScript: "../assets/js/build/js/utils.js"
+                });
             </script>  
             <input type="password" name="userRegister[password]" placeholder="کلمه عبور*" required>
             <button name="submitUserRegister" type="submit">ثبت نام</button>
