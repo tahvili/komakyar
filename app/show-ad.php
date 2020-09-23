@@ -37,7 +37,7 @@ get_header(''); ?>
         <div class="box">
             <div class="row" style="padding:15px;padding-left:0px;">
                 <div class="col-md-6">
-                    <h3><?php echo "آگهی کد " . $_GET['adCode']?></h3>
+                    <h5><?php echo "آگهی کد " . $_GET['adCode']?></h5>
                 </div>
                 <div class="col-md-2">
                 </div>

@@ -29,3 +29,16 @@ header .logo {
 header .navbar-nav a {
     color: #fff !important;
 }
+
+@media (max-width: 1000px){
+    .site-footer {
+        bottom: 0px;
+        left: 0px;
+        position:relative !important;margin-top:-5em;
+        background-image: linear-gradient(transparent,#1473e6de, #1473e6, #1473e6, #1473e6) !important;
+        color:#fff;
+      }
+      .site-footer .ml-auto, .site-footer .mr-auto{margin:auto;padding-bottom:10px;text-align:center;}
+
+      .site-footer a{color:#fff !important;}
+}

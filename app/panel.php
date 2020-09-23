@@ -34,7 +34,7 @@ get_header(''); ?>
 
     </div>
     <div class="col-md-7">
-        <div class="box">
+        <div class="box" style="margin-bottom:60px;">
             <div class="row" style="padding:15px;padding-left:0px;">
                 <div class="col-md-6">
                     <h3>آگهی های من</h3>
