@@ -85,6 +85,13 @@ function error(){
         }
     }
 
+    if(isset($_GET['fromsubmit'])){
+        $msg = $_GET['fromsubmit'];
+        if ($msg=="success"){
+            echo "<div class='alert alert-success'>پیام شما با موفقیت ثبت شد.</div>";
+        }
+    }
+
 }
 
 // function posted($id, $title, $impression, $like, $action) {
