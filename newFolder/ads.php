@@ -40,15 +40,8 @@ get_header(''); ?>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>-</<td>
-                        <td>-</<td>
-                        <td>-</<td>
-                        <td>-</<td>
-                        <td>-</<td>
-                    </tr>
-
-                    </tbod1y>
+<?php showAllAds();?>
+                </tbod1y>
             </table>
 
 

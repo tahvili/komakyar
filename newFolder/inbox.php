@@ -31,7 +31,6 @@ get_header(''); ?>
                 <thead>
                     <tr>
                         <th scope="col">نام و نام خانوادگی</th>
-                        <th scope="col">آدرس ایمیل</th>
                         <th scope="col">موضوع پیام</th>
                         <th scope="col">تاریخ ثبت</th>
                         <th scope="col">عملیات</th>
@@ -39,14 +38,7 @@ get_header(''); ?>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>-</<td>
-                        <td>-</<td>
-                        <td>-</<td>
-                        <td>-</<td>
-                        <td>-</<td>
-                    </tr>
-
+<?php showAllContact();?>
                     </tbod1y>
             </table>
 

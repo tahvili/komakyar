@@ -59,7 +59,10 @@ function ads($company, $title, $description, $phone, $address, $instagram, $face
 
 function view($company, $title, $description, $phone, $address, $instagram, $facebook, $website) {
     $value = "<div class='col-md-12'><div class='ad-view'>
-    <h3>".$company."</h3><p><b>".$title."</b></p><p>".$description."</p><ul>";
+    <h3> نام شرکت: ".$company."</h3>
+    <p><b> عنوان آگهی: ".$title."</b></p>
+    <p> توضیحات آگهی: ".$description."</p>
+    <ul>";
     if($phone!=""){$value=$value."<li><img src='../assets/img/phone.svg' alt='Phone Number'><a href='tel:".$phone."'>".$phone."</a></li>";}
     if($address!=""){$value=$value."<li><img src='../assets/img/pin.svg' alt='Location'><a href='https://www.google.com/maps/place/".$address."'>".$address."</a></li>";}
     if($instagram!=""){$value=$value."<li><img src='../assets/img/instagram.svg' alt='Instagram'><a href='https://instagram.com/".$instagram."'>".$instagram."</a></li>";}
@@ -183,5 +186,64 @@ function gravatar($email = '', $rating = 'pg') {
     $gravurl = "http://www.gravatar.com/avatar/$email";
     return '<img src="'.$gravurl.'" border="0" alt="Avatar" class="profile-picture">';
 }
+
+
+
+// Show All Ads
+function showAllAds(){
+    $dbConn = dbConnection();
+    $queryShowAllAds = "SELECT * FROM ads";
+    $queryResShowAllAds = mysqli_query($dbConn,$queryShowAllAds);
+ 
+    while ($queryRowRestShowAllAd = mysqli_fetch_array($queryResShowAllAds)){
+        echo "<tr>";
+        echo "<th scope='row'>" . $queryRowRestShowAllAd['adCode'] . "</th>";
+        echo "<td>" . $queryRowRestShowAllAd['adTitle'] . "</td>";
+        echo "<td>" . $queryRowRestShowAllAd['adDate'] . "</span></td>";
+        echo "<td><span class='badge badge-warning p-2'>" . $queryRowRestShowAllAd['adStatus'] . "</td>";
+        echo "<td><a href='show-ad.php?adCode=" . $queryRowRestShowAllAd['adCode'] . "'>نمایش آگهی</a></td>";
+
+        echo "</<tr>";  
+    };
+    
+};
+
+
+// Show All Users
+function showAllUsers(){
+    $dbConn = dbConnection();
+    $queryShowAllUsers = "SELECT * FROM users";
+    $queryResShowAllUsers = mysqli_query($dbConn,$queryShowAllUsers);
+ 
+    while ($queryRowRestShowAllUsers = mysqli_fetch_array($queryResShowAllUsers)){
+        echo "<tr>";
+        echo "<th scope='row'>" . $queryRowRestShowAllUsers['name'] . "</th>";
+        echo "<th scope='row'>" . $queryRowRestShowAllUsers['lastName'] . "</th>";
+        echo "<th scope='row'>" . $queryRowRestShowAllUsers['email'] . "</th>";
+        echo "<th scope='row'>" . $queryRowRestShowAllUsers['phoneNumber'] . "</th>";
+        echo "<td><a href='show-user.php?userId=" . $queryRowRestShowAllUsers['id'] . "'>نمایش کاربر</a></td>";
+
+        echo "</<tr>";  
+    };
+    
+};
+
+// Show Contact from
+function showAllContact(){
+    $dbConn = dbConnection();
+    $queryshowAllContact = "SELECT * FROM contact";
+    $queryResshowAllContact = mysqli_query($dbConn,$queryshowAllContact);
+ 
+    while ($queryRowRestshowAllContact = mysqli_fetch_array($queryResshowAllContact)){
+        echo "<tr>";
+        echo "<th scope='row'>" . $queryRowRestshowAllContact['fullName'] . "</th>";
+        echo "<th scope='row'>" . $queryRowRestshowAllContact['subject'] . "</th>";
+        echo "<th scope='row'>" . $queryRowRestshowAllContact['date'] . "</th>";
+        echo "<td><a href='show-message.php?messageId=" . $queryRowRestshowAllContact['id'] . "'>نمایش پیام</a></td>";
+
+        echo "</<tr>";  
+    };
+    
+};
 
 ?>

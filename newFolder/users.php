@@ -41,14 +41,7 @@ get_header(''); ?>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>-</<td>
-                        <td>-</<td>
-                        <td>-</<td>
-                        <td>-</<td>
-                        <td>-</<td>
-                    </tr>
-
+<?php showAllUsers();?>
                     </tbod1y>
             </table>
 
