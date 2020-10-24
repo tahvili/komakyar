@@ -18,7 +18,7 @@ get_header(''); ?>
         <div class="box">
             <div class="row" style="padding:15px;padding-left:0px;">
                 <div class="col-md-6">
-                    <h5><?php echo "آگهی کد " . $_GET['adCode']?></h5>
+                    <h5><?php echo "کد پیام " . $_GET['messageId']?></h5>
                 </div>
                 <div class="col-md-2">
                 </div>
@@ -31,15 +31,15 @@ get_header(''); ?>
 
             <?php
             
-                $showAdCode = $_GET['adCode'];
+                $showCode = $_GET['messageId'];
                 $dbConn = dbConnection();
-                $queryShowAdCode = "SELECT * FROM ads WHERE adCode = '$showAdCode' ";
-                $queryResShowAdCode = mysqli_query($dbConn, $queryShowAdCode);
+                $queryShowCode = "SELECT * FROM contact WHERE id = '$showCode' ";
+                $queryResShowCode = mysqli_query($dbConn, $queryShowCode);
                 
-                while($queryRowShowAdCode = mysqli_fetch_array($queryResShowAdCode)) { 
+                while($queryRowShowCode = mysqli_fetch_array($queryResShowCode)) { 
                     ?>
 
-                <?php view($queryRowShowAdCode['bussinesName'], $queryRowShowAdCode['adTitle'], $queryRowShowAdCode['adText'], $queryRowShowAdCode['phoneNumber'], $queryRowShowAdCode['address'], $queryRowShowAdCode['instagram'], $queryRowShowAdCode['facebook'], $queryRowShowAdCode['website']); ?>
+                <?php message($queryRowShowCode['fullName'], $queryRowShowCode['website'], $queryRowShowCode['phoneNumber'], $queryRowShowCode['email'], $queryRowShowCode['subject'], $queryRowShowCode['textMessage'], $queryRowShowCode['date']); ?>
 
                    <?php 
                    

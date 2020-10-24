@@ -72,6 +72,28 @@ function view($company, $title, $description, $phone, $address, $instagram, $fac
     echo $value;
 }
 
+function client($name, $lastName, $email, $phoneNumber, $registerDate) {
+    $value = "<div class='col-md-12'><div class='ad-view'>
+    <h3> نام کاربر: ".$name."</h3>
+    <p><b> نام خانوادگی: ".$lastName."</b></p>
+    <p> پست الکترنیکی: ".$email."</p>
+    <p> شماره تماس: ".$phoneNumber."</p>
+    <p> تاریخ ثبت نام: ".$registerDate."</p></div></div>";
+    echo $value;
+}
+
+function message($name, $website, $phoneNumber, $email, $subject, $textMessage, $date) {
+    $value = "<div class='col-md-12'><div class='ad-view'>
+    <p> نام و نام خانوادگی: ".$name."</p>
+    <p>آدرس وبسایت: ".$website."</p>
+    <p> پست الکترنیکی: ".$email."</p>
+    <p> شماره تماس: ".$phoneNumber."</p>
+    <p>موضوع: ".$subject."</p>
+    <p><br>$textMessage<br><br></p>
+    <p> تاریخ ثبت نام: ".$date."</p></div></div>";
+    echo $value;
+}
+
 function error(){
 
     if(isset($_GET['password'])){
@@ -144,6 +166,43 @@ function getUserInformation($getYourData){
 // Show User Ads
 function showUserAds(){
     $getUserId = getUserInformation("id");
+    $dbConn = dbConnection();
+
+    $queryUserAds = "SELECT * FROM ads WHERE userId = '$getUserId' ";
+    $queryResUserAds = mysqli_query($dbConn, $queryUserAds);
+    
+
+
+    if(mysqli_num_rows($queryResUserAds)== 0){
+        echo "<tr>
+        <td>شما تا حالا هیچ آگهی ثبت نکرده اید! </td>
+        <td>-</<td>
+        <td>-</<td>
+        <td>-</<td>
+        <td>-</<td>
+        </tr>
+        ";
+    }
+    else{
+       while($queryRowResUserAds = mysqli_fetch_array($queryResUserAds)) {
+    
+        echo "<tr>";
+        echo "<th scope='row'>" . $queryRowResUserAds['adCode'] . "</th>";
+        echo "<td>" . $queryRowResUserAds['adTitle'] . "</td>";
+        echo "<td>" . $queryRowResUserAds['adDate'] . "</span></td>";
+        echo "<td><span class='badge badge-warning p-2'>" . $queryRowResUserAds['adStatus'] . "</td>";
+        echo "<td><a href='show-ad.php?adCode=" . $queryRowResUserAds['adCode'] . "'>نمایش آگهی</a></td>";
+
+        echo "</<tr>";     
+       }
+    }
+    
+    
+};
+
+
+function showCustomUserAds($id){
+    $getUserId = $id;
     $dbConn = dbConnection();
 
     $queryUserAds = "SELECT * FROM ads WHERE userId = '$getUserId' ";
