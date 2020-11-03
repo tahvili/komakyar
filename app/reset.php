@@ -1,24 +1,36 @@
-<?php 
-require '../includes/functions.php';
-if (isset($_SESSION['mailSession'])) {
-    header('Location: panel.php');
-}
+<?php
 
-get_header('transparent'); ?>
+    require_once('../includes/functions.php');
+    $pageTitle = "فراموشی رمز عبور";
+    get_header($pageTitle);
+    
+?>
 
-<div class="row no-padding">
-    <div class="col-md-6 blue full-height vertical-center">
+<link rel="stylesheet" href='http://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/css/transparent.css'>
 
-        <form class="login" action="" method="post">
-            رمز عبور خود را فراموش کرده اید؟<br> برای شروع بازیابی آدرس ایمیل خود را وارد نمایید.<br><br>
-            <input type="email" placeholder="ایمیل پست الکترونیکی" required>
-            <button type="submit">ارسال</button>
-        </form>
+<div class="container-fluid">
+    <div class="row full-height">
+        <div class="col-lg-6 bg-komakyar frm-login">
+            <form class="mx-auto w-75" action="" method="post">
+                <p> برای شروع بازیابی آدرس ایمیل خود را وارد نمایید.</p>
+                <div class="form-group">
+                    <input type="text" name="" class="form-control" placeholder="آدرس ایمیل">
+                </div>
+                <div class="form-group text-left">
+                    <button type="submit" name="" class="btn btn-komakyar">ارسال</button>
+                </div>
 
-
-    </div>
-    <div class="col-md-6 white map full-height vertical-center">
+            </form>
+            
+        </div>
+        <div class="col-lg-6 community-login">
+            <div class="community-login-content">
+                <h1><?php echo $pageTitle?></h1>
+                <h2>کمک‌یار، جامعه زیبا برای ایرانیان کانادا</h2>
+            </div>
+        </div>
     </div>
 </div>
-
-<?php get_footer(); ?>
+<?php 
+    get_footer();
+?>

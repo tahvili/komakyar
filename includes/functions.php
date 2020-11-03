@@ -1,308 +1,35 @@
 <?php
-    session_start();
-    define('ABSPATH', TRUE);
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/server/config.php';
+session_start();
+// echo "My Session is " . @$_SESSION["userEmail"] ;
+require_once 'config.php';
 
-
-
-function page_title() {
-	return ("<title>blub</title>");
+function get_header($pageTitle) {
+    include $_SERVER['DOCUMENT_ROOT'] . '/includes/sections/header.php';
 }
-
-function menu() {
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/menu.php';
-}
-
-function main_sponsor() {
-    include $_SERVER['DOCUMENT_ROOT'] . '/includes/sponsor.php';
-}
-
-function get_header($state) {
-    include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
-    if ($state=="transparent"){
-        echo "<link rel='stylesheet' id='style-css' href='../assets/css/transparent.css' media='all' />";
-    }
-}
-
 function get_footer() {
-    include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/includes/sections/footer.php';
 }
 
-function searchbox() {
-    include $_SERVER['DOCUMENT_ROOT'] . '/includes/search.php';
-}
-
-function category() {
-    include $_SERVER['DOCUMENT_ROOT'] . '/includes/category.php';
-}
-
-function get_control(){
-    include $_SERVER['DOCUMENT_ROOT'] . '/newFolder/control.php';
-}
-
-function newsletter() {
-    include $_SERVER['DOCUMENT_ROOT'] . '/includes/newsletter.php';
-}
-
-function ads($company, $title, $description, $phone, $address, $instagram, $facebook, $website) {
-    $value = "<div class='col-md-6'><div class='ad'>
-    <h4>".$company."</h4><br><p><b>".$title."</b></p><br><p>".$description."</p><br><ul>";
-    if($phone!=""){$value=$value."<li><img src='../assets/img/phone.svg' alt='Phone Number'><a href='tel:".$phone."'>".$phone."</a></li>";}
-    if($address!=""){$value=$value."<li><img src='../assets/img/pin.svg' alt='Location'><a href='https://www.google.com/maps/place/".$address."'>".$address."</a></li>";}
-    if($instagram!=""){$value=$value."<li><img src='../assets/img/instagram.svg' alt='Instagram'><a href='https://instagram.com/".$instagram."'>".$instagram."</a></li>";}
-    if($facebook!=""){$value=$value."<li><img src='../assets/img/facebook.svg' alt='Facebook'><a href='https://www.facebook.com/".$instagram."'>".$facebook."</a></li>";}
-    if($website!=""){$value=$value."<li><img src='../assets/img/pc.svg' alt='Website'><a href='//".$website."'>".$website."</a></li>";}
-    $value=$value."<li><img src='../assets/img/pc.svg' alt='Website'><a href='//".$website."'>".$website."</a></li></ul></div></div>";
-    echo $value;
-    echo $value;
-}
-
-function view($company, $title, $description, $phone, $address, $instagram, $facebook, $website) {
-    $value = "<div class='col-md-12'><div class='ad-view'>
-    <h3> نام شرکت: ".$company."</h3>
-    <p><b> عنوان آگهی: ".$title."</b></p>
-    <p> توضیحات آگهی: ".$description."</p>
-    <ul>";
-    if($phone!=""){$value=$value."<li><img src='../assets/img/phone.svg' alt='Phone Number'><a href='tel:".$phone."'>".$phone."</a></li>";}
-    if($address!=""){$value=$value."<li><img src='../assets/img/pin.svg' alt='Location'><a href='https://www.google.com/maps/place/".$address."'>".$address."</a></li>";}
-    if($instagram!=""){$value=$value."<li><img src='../assets/img/instagram.svg' alt='Instagram'><a href='https://instagram.com/".$instagram."'>".$instagram."</a></li>";}
-    if($facebook!=""){$value=$value."<li><img src='../assets/img/facebook.svg' alt='Facebook'><a href='https://www.facebook.com/".$instagram."'>".$facebook."</a></li>";}
-    if($website!=""){$value=$value."<li><img src='../assets/img/pc.svg' alt='Website'><a href='//".$website."'>".$website."</a></li>";}
-    $value=$value."<li><img src='../assets/img/pc.svg' alt='Website'><a href='//".$website."'>".$website."</a></li></ul></div></div>";
-    echo $value;
-}
-
-function client($name, $lastName, $email, $phoneNumber, $registerDate) {
-    $value = "<div class='col-md-12'><div class='ad-view'>
-    <h3> نام کاربر: ".$name."</h3>
-    <p><b> نام خانوادگی: ".$lastName."</b></p>
-    <p> پست الکترنیکی: ".$email."</p>
-    <p> شماره تماس: ".$phoneNumber."</p>
-    <p> تاریخ ثبت نام: ".$registerDate."</p></div></div>";
-    echo $value;
-}
-
-function message($name, $website, $phoneNumber, $email, $subject, $textMessage, $date) {
-    $value = "<div class='col-md-12'><div class='ad-view'>
-    <p> نام و نام خانوادگی: ".$name."</p>
-    <p>آدرس وبسایت: ".$website."</p>
-    <p> پست الکترنیکی: ".$email."</p>
-    <p> شماره تماس: ".$phoneNumber."</p>
-    <p>موضوع: ".$subject."</p>
-    <p><br>$textMessage<br><br></p>
-    <p> تاریخ ثبت نام: ".$date."</p></div></div>";
-    echo $value;
-}
-
-function error(){
-
-    if(isset($_GET['password'])){
-        $msg = $_GET['password'];
-        if ($msg=="error"){
-            echo "<div class='alert alert-danger'>حساب کاربری وارد شده وجود ندارد.</div>";
-        }
+function alert($alertMessage,$alertType){
+    echo "<script>
+    const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3200,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
     }
+    });
+    Toast.fire({";
+        echo "icon:'" . $alertType . "'";        
+        echo ",title:'" . $alertMessage . "'";
+    echo "});
+    </script>"
+    ;
+;}
 
-    if(isset($_GET['register'])){
-        $msg = $_GET['register'];
-        if ($msg=="success"){
-            echo "<div class='alert alert-success'>ثبت نام کامل شود. لطفا وارد اکانت شوید</div>";
-        }
-    }
-
-    if(isset($_GET['fromsubmit'])){
-        $msg = $_GET['fromsubmit'];
-        if ($msg=="success"){
-            echo "<div class='alert alert-success'>پیام شما با موفقیت ثبت شد.</div>";
-        }
-    }
-
-}
-
-// function posted($id, $title, $impression, $like, $action) {
-//     $value = "<div class='row'>
-//     <div class='col-md-6'>
-//     <div class='post-title'>".$title."</div>
-//     </div>
-//     <div class='col-md-2'>
-//     <div class='post-info'>".$impression." دیدار </div>
-//     </div>
-//     <div class='col-md-2'>
-//     <div class='post-info'>".$like." لایک </div>
-//     </div>
-//     <div class='col-md-2'>
-//     <a class='button' href='./".$action."/?id=".$id."'>".$action."</a>
-//     </div>
-
-//     </div>";
-//     echo $value;
-// }
-
-function checkLoginStatus(){
-    if(!isset($_SESSION['mailSession'])){
-        echo "The Session is not set";
-    }else {
-        echo "The session is " . $_SESSION['mailSession']; 
-    };
-};
-checkLoginStatus();
-
-
-
-
-
-// Get User Information
-function getUserInformation($getYourData){
-    $dbConn = dbConnection();
-    $userMailSession = $_SESSION['mailSession'];   
-    
-    $queryFindUserId = "SELECT * FROM users WHERE email = '$userMailSession' ";
-    $queryResFindUserId = mysqli_query($dbConn, $queryFindUserId);
-    $queryRowFindUserId = mysqli_fetch_assoc($queryResFindUserId);
-    return $queryRowFindUserId[$getYourData];
-
-};
-
-// Show User Ads
-function showUserAds(){
-    $getUserId = getUserInformation("id");
-    $dbConn = dbConnection();
-
-    $queryUserAds = "SELECT * FROM ads WHERE userId = '$getUserId' ";
-    $queryResUserAds = mysqli_query($dbConn, $queryUserAds);
-    
-
-
-    if(mysqli_num_rows($queryResUserAds)== 0){
-        echo "<tr>
-        <td>شما تا حالا هیچ آگهی ثبت نکرده اید! </td>
-        <td>-</<td>
-        <td>-</<td>
-        <td>-</<td>
-        <td>-</<td>
-        </tr>
-        ";
-    }
-    else{
-       while($queryRowResUserAds = mysqli_fetch_array($queryResUserAds)) {
-    
-        echo "<tr>";
-        echo "<th scope='row'>" . $queryRowResUserAds['adCode'] . "</th>";
-        echo "<td>" . $queryRowResUserAds['adTitle'] . "</td>";
-        echo "<td>" . $queryRowResUserAds['adDate'] . "</span></td>";
-        echo "<td><span class='badge badge-warning p-2'>" . $queryRowResUserAds['adStatus'] . "</td>";
-        echo "<td><a href='show-ad.php?adCode=" . $queryRowResUserAds['adCode'] . "'>نمایش آگهی</a></td>";
-
-        echo "</<tr>";     
-       }
-    }
-    
-    
-};
-
-
-function showCustomUserAds($id){
-    $getUserId = $id;
-    $dbConn = dbConnection();
-
-    $queryUserAds = "SELECT * FROM ads WHERE userId = '$getUserId' ";
-    $queryResUserAds = mysqli_query($dbConn, $queryUserAds);
-    
-
-
-    if(mysqli_num_rows($queryResUserAds)== 0){
-        echo "<tr>
-        <td>شما تا حالا هیچ آگهی ثبت نکرده اید! </td>
-        <td>-</<td>
-        <td>-</<td>
-        <td>-</<td>
-        <td>-</<td>
-        </tr>
-        ";
-    }
-    else{
-       while($queryRowResUserAds = mysqli_fetch_array($queryResUserAds)) {
-    
-        echo "<tr>";
-        echo "<th scope='row'>" . $queryRowResUserAds['adCode'] . "</th>";
-        echo "<td>" . $queryRowResUserAds['adTitle'] . "</td>";
-        echo "<td>" . $queryRowResUserAds['adDate'] . "</span></td>";
-        echo "<td><span class='badge badge-warning p-2'>" . $queryRowResUserAds['adStatus'] . "</td>";
-        echo "<td><a href='show-ad.php?adCode=" . $queryRowResUserAds['adCode'] . "'>نمایش آگهی</a></td>";
-
-        echo "</<tr>";     
-       }
-    }
-    
-    
-};
-
-// Load a gravatar
-
-function gravatar($email = '', $rating = 'pg') {
-    $default = "../up/profile.png"; // Set a Default Avatar
-    $email = md5(strtolower(trim($email)));
-    $gravurl = "http://www.gravatar.com/avatar/$email";
-    return '<img src="'.$gravurl.'" border="0" alt="Avatar" class="profile-picture">';
-}
-
-
-
-// Show All Ads
-function showAllAds(){
-    $dbConn = dbConnection();
-    $queryShowAllAds = "SELECT * FROM ads";
-    $queryResShowAllAds = mysqli_query($dbConn,$queryShowAllAds);
  
-    while ($queryRowRestShowAllAd = mysqli_fetch_array($queryResShowAllAds)){
-        echo "<tr>";
-        echo "<th scope='row'>" . $queryRowRestShowAllAd['adCode'] . "</th>";
-        echo "<td>" . $queryRowRestShowAllAd['adTitle'] . "</td>";
-        echo "<td>" . $queryRowRestShowAllAd['adDate'] . "</span></td>";
-        echo "<td><span class='badge badge-warning p-2'>" . $queryRowRestShowAllAd['adStatus'] . "</td>";
-        echo "<td><a href='show-ad.php?adCode=" . $queryRowRestShowAllAd['adCode'] . "'>نمایش آگهی</a></td>";
-
-        echo "</<tr>";  
-    };
-    
-};
-
-
-// Show All Users
-function showAllUsers(){
-    $dbConn = dbConnection();
-    $queryShowAllUsers = "SELECT * FROM users";
-    $queryResShowAllUsers = mysqli_query($dbConn,$queryShowAllUsers);
- 
-    while ($queryRowRestShowAllUsers = mysqli_fetch_array($queryResShowAllUsers)){
-        echo "<tr>";
-        echo "<th scope='row'>" . $queryRowRestShowAllUsers['name'] . "</th>";
-        echo "<th scope='row'>" . $queryRowRestShowAllUsers['lastName'] . "</th>";
-        echo "<th scope='row'>" . $queryRowRestShowAllUsers['email'] . "</th>";
-        echo "<th scope='row'>" . $queryRowRestShowAllUsers['phoneNumber'] . "</th>";
-        echo "<td><a href='show-user.php?userId=" . $queryRowRestShowAllUsers['id'] . "'>نمایش کاربر</a></td>";
-
-        echo "</<tr>";  
-    };
-    
-};
-
-// Show Contact from
-function showAllContact(){
-    $dbConn = dbConnection();
-    $queryshowAllContact = "SELECT * FROM contact";
-    $queryResshowAllContact = mysqli_query($dbConn,$queryshowAllContact);
- 
-    while ($queryRowRestshowAllContact = mysqli_fetch_array($queryResshowAllContact)){
-        echo "<tr>";
-        echo "<th scope='row'>" . $queryRowRestshowAllContact['fullName'] . "</th>";
-        echo "<th scope='row'>" . $queryRowRestshowAllContact['subject'] . "</th>";
-        echo "<th scope='row'>" . $queryRowRestshowAllContact['date'] . "</th>";
-        echo "<td><a href='show-message.php?messageId=" . $queryRowRestshowAllContact['id'] . "'>نمایش پیام</a></td>";
-
-        echo "</<tr>";  
-    };
-    
-};
-
-?>
+  

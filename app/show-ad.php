@@ -1,84 +1,124 @@
-<?php 
-require '../includes/functions.php';
-if (!isset($_SESSION['mailSession'])) {
-    header('Location: login.php');
-}
-get_header(''); ?>
+<?php
 
-<div class="row no-padding">
-    <div class="col-md-1"></div>
+    require_once('../includes/functions.php');
+    require_once('../includes/actions/appAction/userCheck.php');
+    require_once('../includes/actions/appAction/showAd.php');
+    $pageTitle = "نمایش آگهی";
+    get_header($pageTitle);
+    
+?>
 
-    <div class="col-md-3">
-        <div class="user-area">
-            <?php $emailForGravatar =  getUserInformation("email"); echo gravatar($emailForGravatar); ?>
-            <div class="profile-username"><?php echo getUserInformation("name") . " ". getUserInformation("lastName");?>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 mb-4">
+            <div class="page">
+                <?php require_once('../includes/sections/userMenu.php'); ?>
             </div>
-
-            <form class="profile-change" action="" method="post">
-                <input type="hidden" name="destroySession" value="1">
-                <button name="submitUserLogin" type="submit">خروج</button>
-            </form>
-
-
-            <?php 
-                $destroySession = filter_input(INPUT_POST, 'destroySession');
-                if ($destroySession == 1) {
-                    session_destroy();
-                    header('Location: ../../app/login.php?logout=success');
-
-                }    
-            ?>
-
-
         </div>
-
-    </div>
-    <div class="col-md-7">
-        <div class="box">
-            <div class="row" style="padding:15px;padding-left:0px;">
-                <div class="col-md-6">
-                    <h5><?php echo "آگهی کد " . $_GET['adCode']?></h5>
-                </div>
-                <div class="col-md-2">
-                </div>
-                <div class="col-md-4" style="text-align:left;">
-                    <a href='./panel'>برگشت</a>
-
-                </div>
-
+        <div class="col-lg-12 col-sm-12 mb-4">
+            <div class="page p-0">
+                <img class="w-100" src="../assets/img/ads-1300X130.jpg" alt="">
             </div>
+        </div>
+        <div class="col-lg-12 col-sm-12">
+            <div class="page">
+                <div class="page-head row">
+                    <div class="page-head-title"></div>
+                    <div class=" col-lg-4 col-sm-12">
+                        <h1 class="lh-inherit"><?php echo $pageTitle; ?></h1>
+                    </div>
+                    <div class="page-head-btn col-lg-8 col-sm-12 text-left">
+                        <a href="index.php" class="btn btn-komakyar-sm">بازگشت</a>
 
-            <?php
-            
-                $showAdCode = $_GET['adCode'];
-                $dbConn = dbConnection();
-                $queryShowAdCode = "SELECT * FROM ads WHERE adCode = '$showAdCode' ";
-                $queryResShowAdCode = mysqli_query($dbConn, $queryShowAdCode);
-                
-                while($queryRowShowAdCode = mysqli_fetch_array($queryResShowAdCode)) { 
+                    </div>
+                </div>
+                <div class="page-content">
+                    <?php 
+                    ShowAd($_GET['adId']);
                     ?>
 
-                <?php view($queryRowShowAdCode['bussinesName'], $queryRowShowAdCode['adTitle'], $queryRowShowAdCode['adText'], $queryRowShowAdCode['phoneNumber'], $queryRowShowAdCode['address'], $queryRowShowAdCode['instagram'], $queryRowShowAdCode['facebook'], $queryRowShowAdCode['website']); ?>
+                    <ul class="list-group p-0">
+                        <li class="list-group-item">
+                            <b>وضعیت آگهی:</b>
+                            <?php  
+                            if($queryRowShowAd['adStatus'] == 1){
+                                echo "<span class='badge btn-komakyar-sm-b-radius badge-warning p-2'>در حال بررسی</span>";
+                            }elseif($queryRowShowAd['adStatus'] == 2){
+                                echo "<span class='badge btn-komakyar-sm-b-radius badge-success p-2'>تائید شده</span>";
+                            }else{
+                                    echo "<span class='badge btn-komakyar-sm-b-radius badge-danger p-2'>رد شده</span>";
+                             };
+                            ?>
+                        </li>
+                        <li class="list-group-item">
+                            <b>کد آگهی:</b>
+                            <span><?php  echo $queryRowShowAd['adId'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>تاریخ ثبت:</b>
+                            <span><?php  echo $queryRowShowAd['adDate'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>نام کسب و کار: </b>
+                            <span><?php  echo $queryRowShowAd['bussinesName'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>عنوان آگهی:</b>
+                            <span><?php  echo $queryRowShowAd['adTitle'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>متن آگهی: </b>
+                            <span><?php  echo $queryRowShowAd['adText'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>شماره تماس:</b>
+                            <span><?php  echo $queryRowShowAd['adPhone'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>دسته بندی:</b>
+                            <span><?php  echo $queryRowShowAd['adCategory'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>استان- شهر:</b>
+                            <span><?php  echo $queryRowShowAd['adProvince'] . " - " . $queryRowShowAd['adCity'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>آدرس: </b>
+                            <span><?php  echo $queryRowShowAd['adAddress'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>کد پستی: </b>
+                            <span><?php  echo $queryRowShowAd['postcode'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>آدرس ایمیل:</b>
+                            <span><?php  echo $queryRowShowAd['adEmail'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>آدرس وبسایت:</b>
+                            <span><?php  echo $queryRowShowAd['adWebsite'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>فیسبوک:</b>
+                            <span><?php  echo $queryRowShowAd['adFacebook'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>اینستاگرام:</b>
+                            <span><?php  echo $queryRowShowAd['adInstagram'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>تلگرام:</b>
+                            <span><?php  echo $queryRowShowAd['adTelegram'];?></span>
+                        </li>
+                    </ul>
 
-                   <?php 
-                   
-                };
-                
-           
-            
-            
-            
-            ?>
-
-
-
-
+                </div>
+            </div>
         </div>
 
     </div>
-
-
-    <div class="col-md-1"></div>
 </div>
 
-<?php get_footer(); ?>
+<?php 
+    get_footer();
+?>

@@ -1,26 +1,49 @@
-<?php 
-require $_SERVER['DOCUMENT_ROOT'] .'/includes/functions.php';
-get_header(''); ?>
+<?php
 
-<div class="row no-padding">
-    <div class="col-md-3"></div>
-    <div class="col-md-6 box" style="margin-bottom:60px;">
-        <form class="create" action="includes/server/push.php" method="post"><br>
-<h1>تماس با ما</h1>
-<h5>پیام شما می‌تواند شروع یک مکالمۀ سازنده باشد</h5><br>
-            <input type="text" name="contactForm[fullName]" placeholder="نام و نام خانوادگی*" required>
-            <input type="text" name="contactForm[website]" placeholder="آدرس وب سایت">
-            <input type="text" name="contactForm[phoneNumber]" placeholder="شماره تماس">
-            <input type="text" name="contactForm[email]" placeholder="پست الکترونیکی*" required>
-            <input type="text" name="contactForm[subject]" placeholder="موضوع پیام*" required>
-            <textarea name="contactForm[textMessage]" placeholder="توضیحات" style="height:200px;"></textarea>
-            <?php error(); ?>
+    require_once('includes/functions.php');
+    $pageTitle = "تماس با ما";
+    get_header($pageTitle);
+    
+?>
 
-            <button name="submitContact" type="submit">ارسال پیام</button>
-
-        </form>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="page">
+                <div class="page-head">
+                <h1><?php echo $pageTitle; ?></h1>
+                </div>
+                <div class="page-content">
+                    <p>پیام شما می‌تواند شروع یک مکالمۀ سازنده باشد</p>
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <input type="text" name="" class="form-control" placeholder="نام و نام خانواگی *">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="" class="form-control" placeholder="آدرس ایمیل *">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="" class="form-control" placeholder="شماره تماس *">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="" class="form-control" placeholder="آدرس وبسایت">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="" class="form-control" placeholder="موضوع *">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="" class="form-control" rows="5" placeholder="متن پیام *"></textarea>
+                        </div>
+<div class="form-group text-left">
+                        <button type="submit" name="" class="btn btn-komakyar">ارسال پیام</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-3"></div>
 </div>
 
-<?php get_footer(); ?>
+<?php 
+    get_footer();
+?>

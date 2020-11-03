@@ -1,47 +1,57 @@
-<?php 
-require '../includes/functions.php';
+<?php
 
-if (isset($_SESSION['mailSession'])) {
-    header('Location: panel.php');
-}
-
-get_header('transparent'); 
+    require_once('../includes/functions.php');
+    $pageTitle = "ایجاد حساب کاربری";
+    get_header($pageTitle);
+    require_once('../includes/actions/appAction/userRegister.php');
+    
 ?>
 
-<div class="row no-padding">
-    <div class="col-md-6 blue full-height vertical-center">
+<link rel="stylesheet" href='http://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/css/transparent.css'>
 
-        <form class="register" action="../includes/server/push.php" method="post">
-        <?php error(); ?>
-            <input type="text" name="userRegister[name]" placeholder="نام*" required>
-            <input type="text" name="userRegister[lastname]" placeholder="نام خانوادگی*" required>
-            <input type="email" name="userRegister[email]" placeholder="آدرس ایمیل*" required>
-            <input type="tel" placeholder="شماره موبایل*" id="phone" required>
-            <input type="tel" name="userRegister[full_phone]" hidden>
-            <script src="../assets/js/build/js/intlTelInput.js"></script>
-            <script>
-                var input = document.querySelector("#phone");
-                intlTelInput(input, {
-                    initialCountry: "auto",
-                    geoIpLookup: function(success, failure) {
-                        $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
-                        var countryCode = (resp && resp.country) ? resp.country : "us";
-                        success(countryCode);
-                        });
-                    },
-                    hiddenInput: "full_phone",
-                    utilsScript: "../assets/js/build/js/utils.js"
-                });
-            </script>  
-            <input type="password" name="userRegister[password]" placeholder="کلمه عبور*" required>
-            <button name="submitUserRegister" type="submit">ثبت نام</button>
-            <br>
-            <span class="psw"><a href="login">کاربر هستید؟ وارد شوید</a></span>
-        </form>
+<div class="container-fluid">
+    <div class="row full-height">
+        <div class="col-lg-6 bg-komakyar frm-login">
+            <form class="mx-auto w-75" action="" method="post">
+            <div class="form-group">
+                    <input type="text" name="userRegister[name]" class="form-control" placeholder="نام *">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="userRegister[lastName]" class="form-control" placeholder="نام خانوادگی *">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="userRegister[email]" class="form-control" placeholder="آدرس ایمیل *">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="userRegister[phone]" class="form-control" pattern="\d{3}\d{3}\d{4}" placeholder="شماره تلفن *">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="userRegister[password]" class="form-control" placeholder="کلمه عبور *">
+                </div>
+                <div class="form-group text-left">
+                    <span class="frm-login-links">
+                        <a href="login.php">حساب کاربری دارید؟ وارد شوید.</a>
+                    </span>
+                    <button type="submit" name="submit" class="btn btn-komakyar">ثبت نام</button>
+                </div>
 
-    </div>
-    <div class="col-md-6 white map full-height vertical-center">
+            </form>
+            
+            <?php
+                if(isset($_POST['submit'])){
+                    $userRegister = $_POST['userRegister'];
+                    userRegister($userRegister['name'],$userRegister['lastName'],$userRegister['email'],$userRegister['phone'],$userRegister['password']);
+                }
+            ?>
+        </div>
+        <div class="col-lg-6 community-login">
+            <div class="community-login-content">
+                <h1><?php echo $pageTitle?></h1>
+                <h2>کمک‌یار، جامعه زیبا برای ایرانیان کانادا</h2>
+            </div>
+        </div>
     </div>
 </div>
-
-<?php get_footer(); ?>
+<?php 
+    get_footer();
+?>
