@@ -2,8 +2,10 @@
 
     require_once('../includes/functions.php');
     require_once('../includes/actions/masterAction/masterCheck.php');
+    require_once('../includes/actions/masterAction/masterEditUser.php');
     $pageTitle = "ویرایش کاربر";
     get_header($pageTitle);
+    $queryRowqueryEditUser = masterEditUser($_GET['editUserId']);
     
 ?>
 
@@ -22,14 +24,25 @@
                         <h1 class="lh-inherit"><?php echo $pageTitle; ?></h1>
                     </div>
                     <div class="page-head-btn col-lg-6 col-sm-12 text-left">
-                    <div class="btn-group d-ltr">
-                    <a href="show-user.php?userId=<?php echo $_GET['editUserId']; ?>"
-                            class="btn btn-komakyar-sm">بازگشت</a>
-                            <a href="edit-user.php?editUserId=<?php echo $_GET['editUserId'];?>&activeUserId=<?php echo $_GET['editUserId'];?>"
-                                class="btn btn-success btn-border-radius">فعال سازی</a>
+                        <div class="btn-group d-ltr">
+                            <a href="show-user.php?userId=<?php echo $_GET['editUserId']; ?>"
+                                class="btn btn-komakyar-sm">بازگشت</a>
 
-                            <a href="edit-user.php?editUserId=<?php echo $_GET['editUserId'];?>&suspendedUserId=<?php echo $_GET['editUserId'];?>"
-                                class="btn btn-danger btn-border-radius">مسدود کردن</a>
+                            <a href="edit-user.php?editUserId=<?php echo $_GET['editUserId'];?>&userStatus=0 "
+                                class="btn btn-danger btn-komakyar-sm-b-radius">مسدود کردن</a>
+                            <a href="edit-user.php?editUserId=<?php echo $_GET['editUserId'];?>&userStatus=1 "
+                                class="btn btn-success btn-komakyar-sm-b-radius">فعال سازی</a>
+
+                            <?php 
+  
+if(isset($_GET['userStatus']) && $_GET['userStatus']==1 ){
+    activeUser();
+
+}
+elseif(isset($_GET['userStatus']) && $_GET['userStatus']==0 ){
+    suspendUser();
+};
+?>
 
                         </div>
 
@@ -42,42 +55,84 @@
                     <form action="" method="post">
                         <ul class="list-group p-0 mb-4">
                             <li class="list-group-item">
+                                <b>وضعیت حساب کاربری:</b>
+                                <span><?php 
+                                    if($queryRowqueryEditUser['userStatus'] == 1 ){
+                                        echo "<th scope='row'>
+                                        <span class='badge btn-komakyar-sm-b-radius badge-success p-2'>فعال</span></th>";
+                                    
+                                    }else {
+                                        echo "<th scope='row'>
+                                        <span class='badge btn-komakyar-sm-b-radius badge-danger p-2'>مسدود شده</span></th>";
+                                    };
+                             ?></span> </li>
+                            <li class="list-group-item">
                                 <b>تاریخ ثبت نام:</b>
-                                <span>2020-09-25 16:07:33 </span>
+                                <span><?php echo $queryRowqueryEditUser['registerDate'];?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>وضعیت حساب کاربری:</b>
-                                <span>فعال</span>
+                                <b>آدرس ایمیل:</b>
+                                <span><?php echo $queryRowqueryEditUser['email'];?></span>
                             </li>
+
                             <li class="list-group-item">
                                 <b class="d-block mb-2">نام:</b>
                                 <span>
-                                    <input class="form-control" type="text" value="محمد" name="">
+                                    <input class="form-control" type="text"
+                                        value="<?php echo $queryRowqueryEditUser['name']?>"
+                                        name="masterEditUserInput[name]">
                                 </span>
                             </li>
                             <li class="list-group-item">
                                 <b class="d-block mb-2">نام خانوادگی:</b>
                                 <span>
-                                    <input class="form-control" type="text" value="جوان صفاری" name="">
+                                    <input class="form-control" type="text"
+                                        value="<?php echo $queryRowqueryEditUser['lastName']?>"
+                                        name="masterEditUserInput[lastName]">
                                 </span> </li>
-                            <li class="list-group-item">
-                                <b class="d-block mb-2">آدرس ایمیل:</b>
-                                <span>
-                                    <input class="form-control" type="text" value="info@mohammad.com" name="">
-                                </span> </li>
+
                             <li class="list-group-item">
                                 <b class="d-block mb-2">شماره تماس:</b>
                                 <span>
-                                    <input class="form-control" type="text" value="+1 654 127" name="">
-                                </span> </li>
+                                    <input class="form-control" type="text"
+                                        value="<?php echo $queryRowqueryEditUser['phone']?>"
+                                        name="masterEditUserInput[phone]"> </span> </li>
+
+                        </ul>
+                        <div class="form-group m-0 text-left mb-5">
+                            <button type="submit" name="submit" class="btn btn-komakyar">ثبت تغیرات</button>
+                        </div>
+                    </form>
+                    <?php
+                if(isset($_POST['submit'])){
+                    $masterEditUserInput = $_POST['masterEditUserInput'];
+                    masterEditUserInput($masterEditUserInput['name'],$masterEditUserInput['lastName'],$masterEditUserInput['phone'],$_GET['editUserId']);
+                };
+            ?>
+
+                    <form action="" method="post">
+                        <ul class="list-group p-0 mb-4">
+
+                            <li class="list-group-item">
+                                <b class="d-block mb-2">کلمه عبور:</b>
+                                <span>
+                                    <input class="form-control" type="text"
+                                        placeholder="در صورتی که نمیخواهید کلمه عبور را تغیر دهید این فیلد را خالی بگذارید."
+                                        name="masterEditUserPassword"> </span> </li>
 
                         </ul>
                         <div class="form-group m-0 text-left">
-                            <button type="submit" name="" class="btn btn-komakyar">ثبت تغیرات</button>
+                            <button type="submit" name="submitPassword" class="btn btn-komakyar">ویرایش کلمه
+                                عبور</button>
                         </div>
                     </form>
-
-
+                    <?php
+                if(isset($_POST['submitPassword'])){
+                    $masterEditUserPassword = $_POST['masterEditUserPassword'];
+                    $masterEditUserPassword = md5($masterEditUserPassword);
+                    masterEditUserPassword($masterEditUserPassword,$_GET['editUserId']);
+                };
+            ?>
 
                 </div>
             </div>

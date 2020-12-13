@@ -37,7 +37,9 @@
                     ShowAd($_GET['adId']);
                     ?>
 
-                    <ul class="list-group p-0">
+<div class="row">
+    <div class="col-6">
+    <ul class="list-group p-0">
                         <li class="list-group-item">
                             <b>وضعیت آگهی:</b>
                             <?php  
@@ -78,7 +80,13 @@
                             <b>دسته بندی:</b>
                             <span><?php  echo $queryRowShowAd['adCategory'];?></span>
                         </li>
-                        <li class="list-group-item">
+                        
+                    </ul>
+    </div>
+    <div class="col-6">
+    <ul class="list-group p-0">
+                       
+    <li class="list-group-item">
                             <b>استان- شهر:</b>
                             <span><?php  echo $queryRowShowAd['adProvince'] . " - " . $queryRowShowAd['adCity'];?></span>
                         </li>
@@ -111,6 +119,10 @@
                             <span><?php  echo $queryRowShowAd['adTelegram'];?></span>
                         </li>
                     </ul>
+    </div>
+</div>
+
+                    
 
                 </div>
             </div>

@@ -10,7 +10,7 @@ function masterContact(){
         echo "<th>" . $queryRowShowInbox['fullName'] . "</th>";
         echo "<th>" . $queryRowShowInbox['subject'] . "</th>";
         echo "<th>" . $queryRowShowInbox['date'] . "</th>";
-        echo "<td><a class='btn btn-komakyar-sm btn-sm' href='show-user.php?infoxId=" . $queryRowShowInbox['id'] . "'>نمایش پیام</a></td>";
+        echo "<td><a class='btn btn-komakyar-sm btn-sm' href='show-message.php?messageId=" . $queryRowShowInbox['id'] . "'>نمایش پیام</a></td>";
 
         echo "</<tr>";  
     };

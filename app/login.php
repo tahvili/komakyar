@@ -10,6 +10,7 @@
     if(isset($_SESSION["userEmail"])){
         header('Location: index.php');
     };
+    
 ?>
 
 <link rel="stylesheet" href='http://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/css/transparent.css'>

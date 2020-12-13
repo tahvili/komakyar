@@ -31,5 +31,20 @@ function alert($alertMessage,$alertType){
     ;
 ;}
 
- 
-  
+function ipData($ip){
+    $ipdat = @json_decode(file_get_contents( 
+        "http://www.geoplugin.net/json.gp?ip=" . $ip)); 
+    return $ipCountry = $ipdat->geoplugin_countryName;
+};
+
+function sendMail($mailTo,$mailSubject,$mailMessage){
+    $sender = "info@javansaffari.com";
+    $recipient = $mailTo;
+    $subject = $mailSubject;
+    $message = $mailMessage;
+    $headers = 'From:' . $sender;
+
+    mail($recipient, $subject, $message, $headers);
+
+
+};

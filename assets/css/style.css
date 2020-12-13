@@ -49,6 +49,14 @@ a:hover {
     color: #fff;
 }
 
+.table-primary, .table-primary>td, .table-primary>th {
+    background-color: #1473E6 !important;
+    color: #fff !important;
+}
+.table-primary:hover, .table-primary>td:hover, .table-primary>th:hover {
+    background-color: #1473E6 !important;
+}
+
 /* header style */
 header {
     margin-bottom: 3em;
@@ -305,11 +313,6 @@ textarea {
     padding: 20px 0;
 }
 
-.list-group {
-    border-radius: 15px;
-
-}
-
 .border-radius-komakyar-table {
     border-radius: 15px;
     overflow: hidden;
@@ -390,4 +393,51 @@ ul.ads-category li:hover {
 }
 ul.ads-category li:hover a {
     color: #fff;
+}
+
+
+/* master styles */
+.master-icon {
+    font-size: 32px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    height: 50px;
+    width: 50px;
+}
+.master-icon i{
+    display: block;
+    color: #1473E6 !important;
+}
+.master-card{
+    background: #1473E6;
+    padding: 15px;
+    border-radius: 15px;
+}
+.master-card-header {
+    margin-bottom: 5px;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 15px;
+}
+.master-card-header h3{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+.master-card-header span{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 100;
+}
+.master-card-item {
+    text-align: center;}
+.master-card-item span{
+    font-size: 60px;
+    font-weight: 900;
+    color: #000;
+}
+.master-card-item h4 {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
 }

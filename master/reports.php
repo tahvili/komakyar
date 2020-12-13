@@ -34,13 +34,12 @@
 new Chart(document.getElementById("doughnut-chart"), {
     type: 'pie',
     data: {
-      labels: ["British","Columbia","Manitoba","New Brunswick","Newfoundland and Labrador","Northwest Territories","Nova Scotia","Ontario","Prince Edward Island","Quebec","Saskatchewan","Nunavut","Yukon"],
+      labels: ["British Columbia","Manitoba","New Brunswick","Newfoundland and Labrador","Northwest Territories","Nova Scotia","Ontario","Prince Edward Island","Quebec","Saskatchewan","Nunavut","Yukon"],
       
       datasets: [
         {
-          label: "Population (millions)",
           backgroundColor: ["#ff9ff3","#00d2d3","#feca57","#54a0ff","#ff6b6b","#5f27cd","#48dbfb" ,"#c8d6e5","#1dd1a1","#576574","#01a3a4","#222f3e","#341f97","#ee5253"],
-          data: [10,15,12,18,25,30,25,10,1,75,25,65,99,50],
+          data:<?php reportProvenceAds(); ?>,
 
 
         }
@@ -57,7 +56,6 @@ new Chart(document.getElementById("doughnut-chart"), {
     }
 });
 </script>
-
                 </div>
             </div>
         </div>

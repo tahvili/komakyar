@@ -11,6 +11,10 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
+        <div class="page p-0 mb-4">
+                <img class="w-100" src="../assets/img/ads-1300X130.jpg" alt="">
+            </div>
+
             <div class="page">
                 <div class="page-head">
                     <h1 class="lh-inherit"><?php echo $pageTitle; ?></h1>
@@ -116,6 +120,9 @@
                 }
             ?>
                 </div>
+            </div>
+            <div class="page p-0 mt-4">
+                <img class="w-100" src="../assets/img/ads-1300X130.jpg" alt="">
             </div>
         </div>
     </div>

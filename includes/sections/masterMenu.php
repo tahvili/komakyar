@@ -9,6 +9,7 @@
         <li class="list-group-item"><a href="reports.php">گزارشات</a></li>
         <li class="list-group-item"><a href="logs.php">لاگ سیستم</a></li>
         <li class="list-group-item"><a href="settings.php">تنظیمات</a></li>
+        <li class="list-group-item"><a href="documents.php">مستندات</a></li>
         <li class="list-group-item"><a href="logout.php">خروج</a></li>
     </ul>
 </div>

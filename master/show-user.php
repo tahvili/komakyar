@@ -2,9 +2,10 @@
 
     require_once('../includes/functions.php');
     require_once('../includes/actions/masterAction/masterCheck.php');
+    require_once('../includes/actions/masterAction/masterShowUser.php');
     $pageTitle = "نمایش کاربر";
     get_header($pageTitle);
-    
+    $queryRowqueryUserInfo = masterShowUser($_GET['userId']);
 ?>
 
 <div class="container">
@@ -24,7 +25,15 @@
                     <div class="page-head-btn col-lg-5 col-sm-12 text-left">
 
                         <div class="btn-group d-ltr">
-                            <a href="users.php" class="btn btn-komakyar-sm">بازگشت</a>
+                            <a href="
+                            <?php 
+                            if(isset($_GET['adIdRef'])){
+                                echo "show-ad.php?adId=" . $_GET['adIdRef'];
+                            }else{
+                                echo "users.php";
+                            };
+                            ?>
+                            " class="btn btn-komakyar-sm">بازگشت</a>
 
                             <a href="edit-user.php?editUserId=<?php echo $_GET['userId'];?>"
                                 class="btn btn-warning btn-border-radius">ویرایش کاربر</a>
@@ -36,27 +45,36 @@
                     <ul class="list-group p-0">
                         <li class="list-group-item">
                             <b>وضعیت حساب کاربری:</b>
-                            <span>فعال</span>
+                            <span><?php 
+                                    if($queryRowqueryUserInfo['userStatus'] == 1 ){
+                                        echo "<th scope='row'>
+                                        <span class='badge btn-komakyar-sm-b-radius badge-success p-2'>فعال</span></th>";
+                                    
+                                    }else {
+                                        echo "<th scope='row'>
+                                        <span class='badge btn-komakyar-sm-b-radius badge-danger p-2'>مسدود شده</span></th>";
+                                    };
+                             ?></span>
                         </li>
                         <li class="list-group-item">
                             <b>تاریخ ثبت نام:</b>
-                            <span>2020-09-25 16:07:33 </span>
+                            <span><?php echo $queryRowqueryUserInfo['registerDate']; ?></span>
                         </li>
                         <li class="list-group-item">
                             <b>نام:</b>
-                            <span>محمد</span>
+                            <span><?php echo $queryRowqueryUserInfo['name']; ?></span>
                         </li>
                         <li class="list-group-item">
                             <b>نام خانوادگی:</b>
-                            <span>جوان صفاری</span>
+                            <span><?php echo $queryRowqueryUserInfo['lastName']; ?></span>
                         </li>
                         <li class="list-group-item">
                             <b>آدرس ایمیل:</b>
-                            <span>mohammad@gmail.com</span>
+                            <span><?php echo $queryRowqueryUserInfo['email']; ?></span>
                         </li>
                         <li class="list-group-item">
                             <b>شماره تماس:</b>
-                            <span>+1 466 2156</span>
+                            <span><?php echo $queryRowqueryUserInfo['phone']; ?></span>
                         </li>
 
                     </ul>
@@ -72,10 +90,6 @@
                     </div>
                 </div>
                 <div class="page-content">
-
-                    <input type="text" id="myInput" onkeyup="myTable()"
-                        class="form-control border-radius-komakyar-table mb-2" placeholder="جستجو کنید ...">
-
                     <table id="myTable"
                         class="table table-bordered text-center border-radius-komakyar-table table-hover">
                         <thead>
@@ -88,38 +102,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td><span class="badge btn-komakyar-sm-b-radius badge-warning p-2">در حال بررسی</span>
-                                </td>
-                                <td><a href="show-ad.php?adCode=&userId=<?php echo $_GET['userId']; ?>"
-                                        class="btn btn-komakyar-sm btn-sm">نمایش آگهی</a></td>
-                            </tr>
+<?php masterShowUserAds($_GET['userId']); ?>
                         </tbody>
                     </table>
 
-                    <script>
-                        function myTable() {
-                            var input, filter, table, tr, td, i, txtValue;
-                            input = document.getElementById("myInput");
-                            filter = input.value.toUpperCase();
-                            table = document.getElementById("myTable");
-                            tr = table.getElementsByTagName("tr");
-                            for (i = 0; i < tr.length; i++) {
-                                td = tr[i].getElementsByTagName("td")[0];
-                                if (td) {
-                                    txtValue = td.textContent || td.innerText;
-                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                        tr[i].style.display = "";
-                                    } else {
-                                        tr[i].style.display = "none";
-                                    }
-                                }
-                            }
-                        }
-                    </script>
                 </div>
             </div>
         </div>

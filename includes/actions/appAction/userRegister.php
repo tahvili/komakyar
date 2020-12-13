@@ -9,6 +9,7 @@ function userRegister ($userRegisterName, $userRegisterLastName, $userRegisterEm
 
     if(mysqli_query($dbConn, $queryUserRegister)) {
         $_SESSION["userEmail"] = $userRegisterEmail;
+        sendMail($userRegisterEmail,"عضویت در کمک یار","شما با موفیت در کمیار عضو شدید.");
         header('Location: ../../../app/index.php?register=success');
     }
 

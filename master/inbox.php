@@ -5,7 +5,6 @@
     require_once('../includes/actions/masterAction/masterContact.php');
     $pageTitle = "صندوق پیام";
     get_header($pageTitle);
-    
 ?>
 
 <div class="container">

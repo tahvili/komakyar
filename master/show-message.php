@@ -2,9 +2,10 @@
 
     require_once('../includes/functions.php');
     require_once('../includes/actions/masterAction/masterCheck.php');
+    require_once('../includes/actions/masterAction/masterShowMessage.php');
     $pageTitle = "نمایش پیام";
     get_header($pageTitle);
-    
+    $queryRowShowMessage = masterShowMessage($_GET['messageId']);
 ?>
 
 <div class="container">
@@ -30,35 +31,32 @@
                     <ul class="list-group p-0">
                         <li class="list-group-item">
                             <b>تاریخ ثبت:</b>
-                            <span>2020-09-25 16:07:33 </span>
+                            <span><?php echo $queryRowShowMessage['date'];?></span>
                         </li>
                         <li class="list-group-item">
                             <b>نام و نام خانوادگی: </b>
-                            <span>محمد</span>
+                            <span><?php echo $queryRowShowMessage['fullName'];?></span>
                         </li>
                         <li class="list-group-item">
                             <b>آدرس ایمیل:</b>
-                            <span>info@mohammad.com</span>
+                            <span><?php echo $queryRowShowMessage['email'];?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>شماره تماس:</b>
+                            <span><?php echo $queryRowShowMessage['phoneNumber'];?></span>
                         </li>
                         <li class="list-group-item">
                             <b>آدرس وبسایت:</b>
-                            <span>google.com</span>
+                            <span><?php echo $queryRowShowMessage['website'];?></span>
                         </li>
                         <li class="list-group-item">
                             <b>موضوع:</b>
-                            <span>تبلیغات</span>
+                            <span><?php echo $queryRowShowMessage['subject'];?></span>
                         </li>
                         <li class="list-group-item">
                             <b>متن پیام:</b>
-                            <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
-                                شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                                کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می
-                                طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و
-                                فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری
-                                موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی
-                                دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار
-                                گیرد.</span>
+                            <p><?php echo $queryRowShowMessage['textMessage'];?></p>
+
                         </li>
                     </ul>
 
